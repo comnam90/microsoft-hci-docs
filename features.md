@@ -13,6 +13,7 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 | Single Parity Volumes              | Yes    | Yes    | Yes    | Yes         |
 | Dual Parity Volumes                | Yes    | Yes    | Yes    | Yes         |
 | Mirror-Accelerated Parity Volumes  | Yes    | Yes    | Yes    | Yes         |
+| ReFS Deduplication                 | No     | Yes    | Yes    | Yes         |
 | Nested Resiliency                  | No     | Yes    | Yes    | Yes         |
 | SCM Support                        | No     | Yes    | Yes    | Yes         |
 | Automatic Storage Maintenance Mode | No     | No     | Yes    | No          |
