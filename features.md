@@ -6,18 +6,18 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 
 ## Storage Spaces Direct Features
 
-| Feature                            | WS2016 | WS2019 | WS2022 | AzSHCI 20H2 |
-| ---------------------------------- | ------ | ------ | ------ | ----------- |
-| 2-way Mirror Volumes               | Yes    | Yes    | Yes    | Yes         |
-| 3-way Mirror Volumes               | Yes    | Yes    | Yes    | Yes         |
-| Single Parity Volumes              | Yes    | Yes    | Yes    | Yes         |
-| Dual Parity Volumes                | Yes    | Yes    | Yes    | Yes         |
-| Mirror-Accelerated Parity Volumes  | Yes    | Yes    | Yes    | Yes         |
-| ReFS Deduplication                 | No     | Yes    | Yes    | Yes         |
-| Nested Resiliency                  | No     | Yes    | Yes    | Yes         |
-| SCM Support                        | No     | Yes    | Yes    | Yes         |
-| Automatic Storage Maintenance Mode | No     | No     | Yes    | No          |
-| Stretch Cluster                    | No     | No     | No     | Yes         |
+| Feature                            | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
+| ---------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ |
+| 2-way Mirror Volumes               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 3-way Mirror Volumes               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Single Parity Volumes              | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Dual Parity Volumes                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Mirror-Accelerated Parity Volumes  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| ReFS Deduplication                 | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Nested Resiliency                  | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| SCM Support                        | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Automatic Storage Maintenance Mode | :x:                | :x:                | :white_check_mark: | :x:                |
+| Stretch Cluster                    | :x:                | :x:                | :x:                | :white_check_mark: |
 
 ## Hyper-V Features
 
