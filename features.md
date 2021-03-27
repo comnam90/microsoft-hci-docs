@@ -17,6 +17,7 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 | Nested Resiliency                  | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | SCM Support                        | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Automatic Storage Maintenance Mode | :x:                | :x:                | :white_check_mark: | :x:                |
+| Thin provisioned Volumes           | :x:                | :x:                | :white_check_mark: | :x:                |
 | Stretch Cluster                    | :x:                | :x:                | :x:                | :white_check_mark: |
 
 ## Hyper-V Features
