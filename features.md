@@ -23,21 +23,21 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 
 ### VM Configuration Support
 
-| Version | WS2016 | WS2019 | WS2022 | AzSHCI 20H2 |
-| ------- | ------ | ------ | ------ | ----------- |
-| 5.0     | Yes    | Yes    | No     | Yes         |
-| 6.2     | Yes    | Yes    | No     | Yes         |
-| 7.0     | Yes    | Yes    | No     | Yes         |
-| 7.1     | Yes    | Yes    | No     | Yes         |
-| 8.0     | Yes    | Yes    | Yes    | Yes         |
-| 8.1     | No     | Yes    | Yes    | Yes         |
-| 8.2     | No     | Yes    | Yes    | Yes         |
-| 8.3     | No     | Yes    | Yes    | Yes         |
-| 9.0     | No     | Yes    | Yes    | Yes         |
-| 9.1     | No     | No     | Yes    | No          |
-| 9.2     | No     | No     | Yes    | No          |
-| 9.3     | No     | No     | Yes    | No          |
-| 10.0    | No     | No     | Yes    | No          |
+| Version | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
+| ------- | ------------------ | ------------------ | ------------------ | ------------------ |
+| 5.0     | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: |
+| 6.2     | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: |
+| 7.0     | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: |
+| 7.1     | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark: |
+| 8.0     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 8.1     | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 8.2     | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 8.3     | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 9.0     | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 9.1     | :x:                | :x:                | :white_check_mark: | :x:                |
+| 9.2     | :x:                | :x:                | :white_check_mark: | :x:                |
+| 9.3     | :x:                | :x:                | :white_check_mark: | :x:                |
+| 10.0    | :x:                | :x:                | :white_check_mark: | :x:                |
 
 ## Failover Clustering Features
 
