@@ -6,8 +6,6 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 
 - [Feature Comparison](#feature-comparison)
   - [Storage Spaces Direct Features](#storage-spaces-direct-features)
-    - [Mirror-Accelerated Parity Volumes](#mirror-accelerated-parity-volumes)
-    - [Delimited Volumes](#delimited-volumes)
   - [Hyper-V Features](#hyper-v-features)
     - [VM Configuration Support](#vm-configuration-support)
   - [Failover Clustering Features](#failover-clustering-features)
@@ -15,37 +13,36 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 
 ## Storage Spaces Direct Features
 
-| Feature                            | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
-| ---------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ |
-| 2-way Mirror Volumes               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 3-way Mirror Volumes               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Single Parity Volumes              | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Dual Parity Volumes                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Mirror-Accelerated Parity Volumes  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Nested Resiliency Volumes          | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Maximum Volume Size                | 32TB               | 64TB               | ?                  | ?                  |
-| ReFS Deduplication                 | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| SCM Support                        | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Delimited Volumes                  | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Automatic Storage Maintenance Mode | :x:                | :x:                | :white_check_mark: | :x:                |
-| Thin provisioned Volumes           | :x:                | :x:                | :white_check_mark: | :x:                |
-| Configurable Rebuild Priority      | :x:                | :x:                | :white_check_mark: | :x:                |
-| Stretch Cluster                    | :x:                | :x:                | :x:                | :white_check_mark: |
-| Sub-extent rebuilds                | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
-| Bitlocker Encryption               | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
-| Converged Deployment               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| Hyper-Converged Deployment         | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Maximum RAW Capacity per Server    | 100TB              | 400TB              | ?                  | ?                  |
-| Maximum RAW Capacity per Pool      | 1PB                | 4PB                | ?                  | ?                  |
+| Feature                                    | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
+| ------------------------------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| [2-way Mirror Volumes][S2D-1]              | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [3-way Mirror Volumes][S2D-2]              | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Single Parity Volumes][S2D-3]             | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Dual Parity Volumes][S2D-4]               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Mirror-Accelerated Parity Volumes][S2D-5] | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Nested Resiliency Volumes                  | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Maximum Volume Size                        | 32TB               | 64TB               | ?                  | 64TB               |
+| ReFS Deduplication                         | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| SCM Support                                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Delimited Volumes                          | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Automatic Storage Maintenance Mode         | :x:                | :x:                | :white_check_mark: | :x:                |
+| Thin provisioned Volumes                   | :x:                | :x:                | :white_check_mark: | :x:                |
+| Configurable Rebuild Priority              | :x:                | :x:                | :white_check_mark: | :x:                |
+| Stretch Cluster                            | :x:                | :x:                | :x:                | :white_check_mark: |
+| Sub-extent rebuilds                        | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
+| Bitlocker Encryption                       | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
+| Converged Deployment                       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| Hyper-Converged Deployment                 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Maximum RAW Capacity per Server            | 100TB              | 400TB              | ?                  | [400TB][S2D-6]     |
+| Maximum RAW Capacity per Pool              | 1PB                | 4PB                | ?                  | [4PB][S2D-6]       |
+| Maximum Volumes                            | 32                 | 64                 | ?                  | 64                 |
 
-<details>
-<summary>More information</summary>
-
-### Mirror-Accelerated Parity Volumes
-
-### Delimited Volumes
-
-</details>
+[S2D-1]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#two-way-mirror
+[S2D-2]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#three-way-mirror
+[S2D-3]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#single-parity
+[S2D-4]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#dual-parity
+[S2D-5]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#mirror-accelerated-parity
+[S2D-6]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/choose-drives#general
 
 ## Hyper-V Features
 
