@@ -4,20 +4,76 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
  and has since improved on it in Windows Server 2019/2022, even released a dedicated operating
  system for it called Azure Stack HCI (AzSHCI).
 
+- [Feature Comparison](#feature-comparison)
+  - [Storage Spaces Direct Features](#storage-spaces-direct-features)
+  - [Hyper-V Features](#hyper-v-features)
+    - [VM Configuration Support](#vm-configuration-support)
+  - [Failover Clustering Features](#failover-clustering-features)
+  - [Software Defined Networking Features](#software-defined-networking-features)
+
 ## Storage Spaces Direct Features
 
-| Feature                            | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
-| ---------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ |
-| 2-way Mirror Volumes               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 3-way Mirror Volumes               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Single Parity Volumes              | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Dual Parity Volumes                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Mirror-Accelerated Parity Volumes  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| ReFS Deduplication                 | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Nested Resiliency                  | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| SCM Support                        | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Automatic Storage Maintenance Mode | :x:                | :x:                | :white_check_mark: | :x:                |
-| Stretch Cluster                    | :x:                | :x:                | :x:                | :white_check_mark: |
+| Feature                                          | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
+| ------------------------------------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| [2-way Mirror Volumes][S2D-1]                    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [3-way Mirror Volumes][S2D-2]                    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Single Parity Volumes][S2D-3]                   | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Dual Parity Volumes][S2D-4]                     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Mirror-Accelerated Parity Volumes][S2D-5]       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Nested Resiliency Volumes][S2D-7]               | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Maximum Volume Size                              | [32TB][S2D-13]     | [64TB][S2D-13]     | ?                  | [64TB][S2D-18]     |
+| Maximum Volumes                                  | [32][S2D-14]       | [64][S2D-14]       | ?                  | [64][S2D-17]       |
+| [ReFS Deduplication][S2D-9]                      | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [SCM Support][S2D-10]                            | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Delimited Volumes][S2D-8]                       | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Automatic Storage Maintenance Mode               | :x:                | :x:                | :white_check_mark: | :x:                |
+| Thin provisioned Volumes                         | :x:                | :x:                | :white_check_mark: | :x:                |
+| [Configurable Rebuild Priority][S2D-16]          | :x:                | :x:                | :white_check_mark: | :x:                |
+| [Stretched Clusters][S2D-11]                     | :x:                | :x:                | :x:                | :white_check_mark: |
+| [Sub-extent rebuilds][S2D-16]                    | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
+| [Bitlocker Encryption][S2D-12]                   | :warning:          | :warning:          | :white_check_mark: | :white_check_mark: |
+| [Converged Deployment][deployment-options]       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| [Hyper-Converged Deployment][deployment-options] | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Maximum RAW Capacity per Server                  | [100TB][S2D-15]    | [400TB][S2D-15]    | [1.6PB][S2D-16]    | [400TB][S2D-6]     |
+| Maximum RAW Capacity per Pool                    | [1PB][S2D-15]      | [4PB][S2D-15]      | [16PB][S2D-16]     | [4PB][S2D-6]       |
+
+<details>
+<summary>:information_source: Windows Server 2016 Notes</summary>
+
+- **Deduplication** is supported on **NTFS** Volumes, however ReFS is the recommended format for S2D Virtual Disks.
+- **Bitlocker Encryption** - This has been supported since WS2012, however [the proces was very manual and required the CSV be taken offline][S2D-19].
+
+</details>
+
+<details>
+<summary>:information_source: Windows Server 2019 Notes</summary>
+
+- **Bitlocker Encryption** - This has been supported since WS2012, however [the proces was very manual and required the CSV be taken offline][S2D-19].
+- **Mirror-Accelerated Parity Volumes** [performance was improved in WS2019 over WS2016][S2D-20].
+
+</details>
+
+[S2D-1]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#two-way-mirror
+[S2D-2]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#three-way-mirror
+[S2D-3]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#single-parity
+[S2D-4]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#dual-parity
+[S2D-5]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#mirror-accelerated-parity
+[S2D-6]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/choose-drives#general
+[S2D-7]: https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/nested-resiliency
+[S2D-8]: https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/delimit-volume-allocation
+[S2D-9]: https://docs.microsoft.com/en-us/windows-server/storage/data-deduplication/whats-new
+[S2D-10]: https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/deploy-pmem
+[S2D-11]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/stretched-clusters
+[S2D-12]: https://docs.microsoft.com/en-us/azure-stack/hci/manage/volume-encryption-deduplication#turn-on-bitlocker-to-protect-volumes
+[deployment-options]: https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-direct-overview#deployment-options
+[S2D-13]: https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/plan-volumes#choosing-the-size-of-volumes
+[S2D-14]: https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/plan-volumes#choosing-how-many-volumes-to-create
+[S2D-15]: https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements#maximum-capacity
+[S2D-16]: https://techcommunity.microsoft.com/t5/failover-clustering/talking-failover-clustering-and-azure-stack-hci-ignite-2019/ba-p/1015497
+[S2D-17]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/plan-volumes#choosing-how-many-volumes-to-create
+[S2D-18]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/plan-volumes#choosing-the-size-of-volumes
+[S2D-19]: https://github.com/microsoft/MSLab/tree/master/Scenarios/BitLocker%20on%20S2D%20cluster
+[S2D-20]: https://docs.microsoft.com/en-us/windows-server/storage/whats-new-in-storage#storage-spaces-direct
 
 ## Hyper-V Features
 
@@ -40,5 +96,12 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 | 10.0    | :x:                | :x:                | :white_check_mark: | :x:                |
 
 ## Failover Clustering Features
+
+| Feature                             | WS2016 | WS2019 | WS2022             | AzSHCI 20H2        |
+| ----------------------------------- | ------ | ------ | ------------------ | ------------------ |
+| CSV Cache Default Size              | 0      | 1GB    | 1GB                | 1GB                |
+| [Affinity/Anti-affinity Rule][FC-1] | :x:    | :x:    | :white_check_mark: | :white_check_mark: |
+
+[FC-1]: https://docs.microsoft.com/en-nz/azure-stack/hci/manage/vm-affinity
 
 ## Software Defined Networking Features
