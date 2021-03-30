@@ -39,14 +39,18 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 
 <details>
 <summary>:information_source: Windows Server 2016 Notes</summary>
+
 - **Deduplication** is supported on **NTFS** Volumes, however ReFS is the recommended format for S2D Virtual Disks.
 - **Bitlocker Encryption** - This has been supported since WS2012, however [the proces was very manual and required the CSV be taken offline][S2D-19].
+
 </details>
 
 <details>
 <summary>:information_source: Windows Server 2019 Notes</summary>
+
 - **Bitlocker Encryption** - This has been supported since WS2012, however [the proces was very manual and required the CSV be taken offline][S2D-19].
 - **Mirror-Accelerated Parity Volumes** [performance was improved in WS2019 over WS2016][S2D-20].
+
 </details>
 
 [S2D-1]: https://docs.microsoft.com/en-nz/azure-stack/hci/concepts/fault-tolerance#two-way-mirror
