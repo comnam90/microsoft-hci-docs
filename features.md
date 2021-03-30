@@ -77,6 +77,18 @@ Microsoft introduced their Hyperconverged Infrastructure (HCI) stack in Windows 
 
 ## Hyper-V Features
 
+| Feature                       | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
+| ----------------------------- | ------------------ | ------------------ | ------------------ | ------------------ |
+| Shielded VMs                  | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Discrete device assignment    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Hot-Add/Remove Memory         | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Hot-Add/Remove NICs           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Linux Secure Boot             | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Nested Virtualization (Intel) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Production Checkpoints        | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Host Resource Protection      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Persistent Memory             | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+
 ### VM Configuration Support
 
 | Version | WS2016             | WS2019             | WS2022             | AzSHCI 20H2        |
